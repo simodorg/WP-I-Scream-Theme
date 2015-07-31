@@ -8,18 +8,18 @@
     <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/apple-touch-icon.png ">
     <?php wp_head(); ?>
   </head>
-  <body <?php body_class(); ?>>
+  <body>
     <div class="blog <?php if ( is_singular() ) { ?>blog--blogpost<?php } ?> mdl-layout mdl-js-layout has-drawer is-upgraded">
       <main class="mdl-layout__content">
         <?php if ( is_singular() ) { ?>
           <div class="back">
-            <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="<?php echo esc_url( home_url() ); ?>" title="go back" role="button">
+            <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="<?php bloginfo( 'url' ); ?>" title="go back" role="button">
               <i class="material-icons" role="presentation">arrow_back</i>
             </a>
           </div>
         <?php } ?>
         <header>
-          <h1 class="blog__title"><a href="<?php echo esc_url( home_url() ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+          <h1 class="blog__title"><a href="<?php bloginfo( 'url' ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
           <p class="blog__description"><?php bloginfo( 'description' ); ?></p>
         </header>
         <div class="blog__posts mdl-grid">
@@ -40,15 +40,15 @@
               </div>
             </div>
             <div class="mdl-card mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop top author">
-              <a href="<?php echo esc_url( home_url() ); ?>">
+              <a href="<?php bloginfo( 'url' ); ?>">
                 <button class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent">
                   <i class="material-icons mdl-color-text--white" role="presentation">refresh</i>
                   <span class="visuallyhidden">refresh</span>
                 </button>
               </a>
               <div class="mdl-card__media mdl-color--white mdl-color-text--grey-600">
-                <a href="<?php echo esc_url( home_url() ); ?>" rel="home"><?php echo get_avatar( 1, 64 ); ?></a>
-                <a href="<?php echo esc_url( home_url() ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+                <a href="<?php bloginfo( 'url' ); ?>" rel="home"><?php echo get_avatar( 1, 64 ); ?></a>
+                <a href="<?php bloginfo( 'url' ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
               </div>
               <div class="mdl-card__supporting-text meta meta--fill mdl-color-text--grey-600">
                 <div>

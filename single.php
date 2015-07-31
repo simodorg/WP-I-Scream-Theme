@@ -24,32 +24,14 @@
       <span><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></span>
     </div>
     <div class="section-spacer"></div>
-    <?php if ( function_exists( 'the_views' ) ) { ?>
-      <div class="meta__views">
-        <?php the_views();  ?>
-        <i class="material-icons" role="presentation">visibility</i>
-        <span class="visuallyhidden">visibility</span>
-      </div>
-    <?php } ?>
+    <div class="meta__views">
+      <?php if ( function_exists( 'the_views' ) ) { the_views(); } ?>
+      <i class="material-icons" role="presentation">visibility</i>
+      <span class="visuallyhidden">visibility</span>
+    </div>
   </div>
   <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
     <?php the_content(); ?>
-    <?php // Todo
-      $defaults = array(
-		    'before'           => '<p>' . __( 'Pages:', 'iscream' ),
-		    'after'            => '</p>',
-		    'link_before'      => '',
-	  	  'link_after'       => '',
-		    'next_or_number'   => 'number',
-	     	'separator'        => ' ',
-	    	'nextpagelink'     => __( 'Next page', 'iscream' ),
-	  	  'previouspagelink' => __( 'Previous page', 'iscream', 'iscream' ),
-	  	  'pagelink'         => '%',
-	  	  'echo'             => 1
-  	  );
-
-      wp_link_pages( $defaults );
-    ?>
   </div>
 
   <?php

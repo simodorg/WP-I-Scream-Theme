@@ -7,8 +7,21 @@ Description: This theme uses Material Design Lite with the blog template, coded 
 Version: 0.2.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: pink, light, one-column, responsive-layout, featured-images, threaded-comments
 Text Domain: iscream
 */
+
+/* To-do */
+.wp-caption,
+.wp-caption-text,
+.sticky,
+.gallery-caption,
+.bypostauthor,
+.alignright,
+.alignleft,
+.aligncenter {
+
+}
 
 * {
   border: 0;
@@ -596,6 +609,12 @@ a:hover {
 .blog--blogpost .comments .comment .children {
   padding-top: 6px;
   padding-left: 48px;
+}
+.blog--blogpost .comments .comment-nav {
+  text-align: center;
+}
+.blog--blogpost .comments .comment-nav * {
+  margin-right: 6px;
 }
 
 .blog--blogpost .back {

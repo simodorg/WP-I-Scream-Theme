@@ -14,21 +14,25 @@
 
 <nav class="nav mdl-cell mdl-cell--12-col">
   <?php if ( get_next_post() ) : ?>
-    <a href="<?php echo get_previous_posts_page_link(); ?>" class="nav__button">
+    <?php previous_posts_link( '
       <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
         <i class="material-icons" role="presentation">arrow_back</i>
       </button>
       Newer
-    </a>
+      ' );
+    ?>
   <?php elseif ( get_previous_post() ) : ?>
     <div class="section-spacer"></div>
-    <a href="<?php echo get_next_posts_page_link(); ?>" class="nav__button">
+    <?php next_posts_link( '
       Older
       <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
         <i class="material-icons" role="presentation">arrow_forward</i>
       </button>
-    </a>
+      ' );
+    ?>
   <?php endif; ?>
 </nav>
+
+<?php // the_posts_pagination(); ?>
 
 <?php get_footer(); ?>

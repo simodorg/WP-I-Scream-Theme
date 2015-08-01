@@ -10,10 +10,10 @@ Styles from [Material Design Lite Blog Template](http://www.getmdl.io/templates/
 
 ## Features
 
-*  Material Design.
-*  Hyouka theme (Chitanda daisuki).
-*  Responsive design.
-*  Font icons.
+*  Material Design
+*  Hyouka theme (Chitanda daisuki)
+*  Responsive design
+*  Font icons
 
 ## Installation
 

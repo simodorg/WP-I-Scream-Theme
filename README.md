@@ -1,4 +1,4 @@
-# WP-I-Scream-Theme
+# WordPress I Scream Theme
 
 ![I Scream](https://i.imgur.com/yi61HxN.png)
 

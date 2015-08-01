@@ -25,7 +25,7 @@ Styles from [Material Design Lite Blog Template](http://www.getmdl.io/templates/
 
 *  Theme requires [WP-PostViews[(https://wordpress.org/plugins/wp-postviews/) plugin.
 
-## Todo Lists.
+## Todo Lists
 
 *  Remove WP-PostViews dependence.
 *  Add theme custom support.

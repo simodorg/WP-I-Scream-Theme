@@ -7,14 +7,14 @@
       'id_submit'         => 'submit',
       'class_submit'      => 'submit',
       'name_submit'       => 'submit',
-      'title_reply'       => __( 'Leave a Reply' ),
-      'title_reply_to'    => __( 'Leave a Reply to %s' ),
+      'title_reply'       => __( 'Leave a Reply', 'iscream' ),
+      'title_reply_to'    => __( 'Leave a Reply to %s', 'iscream' ),
       'cancel_reply_link' => __( '
         <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
           <i class="material-icons" role="presentation">clear</i>
           <span class="visuallyhidden">cancel reply</span>
         </button>' ),
-      'label_submit'      => __( 'Post Comment' ),
+      'label_submit'      => __( 'Post Comment', 'iscream' ),
       'format'            => 'xhtml',
       'must_log_in' => '',
       'logged_in_as' => '',
@@ -42,10 +42,14 @@
         </div>',
     );
     
-    comment_form($comments_args);
+    comment_form( $comments_args );
 
     wp_list_comments( 'type=comment&callback=mytheme_comment' );
 
   ?>
+
+  <div class="comment-nav">
+    <?php paginate_comments_links(); ?>
+  </div>
 
 </div>

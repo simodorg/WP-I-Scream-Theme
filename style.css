@@ -4,11 +4,24 @@ Theme URI: http://www.getmdl.io/templates/blog/index.html
 Author: Google & Simo Dorg
 Author URI: https://simod.org/
 Description: This theme uses Material Design Lite with the blog template, coded by Simo Dorg.
-Version: 0.2.1
+Version: 0.3.5
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: pink, light, one-column, responsive-layout, featured-images, threaded-comments
 Text Domain: iscream
 */
+
+/* To-do */
+.wp-caption,
+.wp-caption-text,
+.sticky,
+.gallery-caption,
+.bypostauthor,
+.alignright,
+.alignleft,
+.aligncenter {
+
+}
 
 * {
   border: 0;
@@ -46,11 +59,12 @@ a:hover {
   text-decoration: underline;
 }
 .blog .blog__title a,
+.blog .top .mdl-card__media a:hover,
 .blog .top ul li a:hover,
 .blog .title:hover,
 .blog .post-category a:hover,
 .blog .post-tags a:hover,
-.blog .more-link:hover {
+.blog .mdl-button:hover {
   text-decoration: none;
 }
 
@@ -367,6 +381,12 @@ a:hover {
 .blog .mdl-card h3.quote:after {
   content: '”';
 }
+.blog .mdl-card .post-meta {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
 .blog .mdl-card .post-category,
 .blog .mdl-card .post-tags {
   margin: 0 0 3px 8px;
@@ -378,7 +398,10 @@ a:hover {
   top: 5px;
   font-size: 20px;
 }
-.blog .more-link i {
+.blog .more-link {
+  margin-top: 16px;
+}
+.blog .mdl-card .entry .mdl-button i {
   position: relative;
   top: 6px;
 }
@@ -597,7 +620,12 @@ a:hover {
   padding-top: 6px;
   padding-left: 48px;
 }
-
+.blog--blogpost .comments .comment-nav {
+  text-align: center;
+}
+.blog--blogpost .comments .comment-nav * {
+  margin-right: 6px;
+}
 .blog--blogpost .back {
   position: absolute;
   top: 16px;

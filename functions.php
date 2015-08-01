@@ -2,12 +2,11 @@
 
 // Enqueue scripts and styles.
 function enqueue_scripts() {
-
   // Add Material Design icon fonts.
-  wp_enqueue_style( 'mdl-icon-fonts', '//fonts.googleapis.com/icon?family=Material+Icons', array(), null );
+  wp_enqueue_style( 'mdl-icon-fonts', 'https://fonts.googleapis.com/icon?family=Material+Icons', array(), null );
 
   // Add Roboto fonts.
-  wp_enqueue_style( 'roboto-fonts', '//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium', array(), null );
+  wp_enqueue_style( 'roboto-fonts', 'https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium', array(), null );
 
   // Add Material Design CSS.
   wp_enqueue_style( 'mdl-sheet', get_template_directory_uri() . '/css/material.min.css', array(), '1.0.2' );
@@ -16,8 +15,9 @@ function enqueue_scripts() {
   wp_enqueue_script( 'mdl-js', get_template_directory_uri() . '/js/material.min.js', array(), '1.0.2', true );
 
   // Load main stylesheet.
-  wp_enqueue_style( 'blog-sheet', get_stylesheet_uri(), array(), '0.2.1' );
+  wp_enqueue_style( 'blog-sheet', get_stylesheet_uri(), array(), '0.3.5' );
 
+  if ( is_singular() ) wp_enqueue_script( 'comment-reply', true );
 }
 
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
@@ -31,13 +31,12 @@ function add_classes_on_li( $classes, $item, $args ) {
 add_filter( 'nav_menu_css_class', 'add_classes_on_li', 1, 3 );
 
 // Add thumbnails support.
-
 add_theme_support( 'post-thumbnails' );
 set_post_thumbnail_size( 884, 360, true );
 
 // This theme uses wp_nav_menu() in two locations.
 register_nav_menus( array(
-  'primary' => __( 'Primary Menu' ),
+  'primary' => __( 'Primary Menu', 'iscream' ),
 ) );
 
 // Add class to more link.
@@ -48,7 +47,7 @@ function modify_read_more_link() {
 add_filter( 'the_content_more_link', 'modify_read_more_link' );
 
 // Custom comment submit button.
-function awesome_comment_form_submit_button($button) {
+function awesome_comment_form_submit_button( $button ) {
   $button =
     '<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" name="submit" type="submit">
       <i class="material-icons" role="presentation">check</i><span class="visuallyhidden">add comment</span>
@@ -78,12 +77,12 @@ function mytheme_comment($comment, $args, $depth) {
   <header class="comment__header">
     <?php echo get_avatar( $comment, 88 ); ?>
     <div class="comment__author">
-      <?php printf( __( '<strong>%s</strong>' ), get_comment_author_link() ); ?>
+      <?php printf( __( '<strong>%s</strong>', 'iscream' ), get_comment_author_link() ); ?>
       <span><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></span>
     </div>
   </header>
   <?php if ( $comment->comment_approved == '0' ) : ?>
-    <em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></em>
+    <em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'iscream' ); ?></em>
     <br />
   <?php endif; ?>
      <div class="comment__text">
@@ -118,10 +117,38 @@ function comment_add_at( $comment_text, $comment = '') {
 add_filter( 'comment_text' , 'comment_add_at', 20, 2 );
 
 // Add theme support.
+if ( ! isset( $content_width ) ) $content_width = 900;
 add_theme_support( 'title-tag' );
 add_theme_support( 'nav-menus' );
 add_theme_support( 'html5', array( 'search-form' ) );
+add_theme_support( 'automatic-feed-links' );
 
+$header = array(
+	'default-image'          => '',
+	'random-default'         => false,
+	'width'                  => 0,
+	'height'                 => 0,
+	'flex-height'            => false,
+	'flex-width'             => false,
+	'default-text-color'     => '',
+	'header-text'            => true,
+	'uploads'                => true,
+	'wp-head-callback'       => '',
+	'admin-head-callback'    => '',
+	'admin-preview-callback' => '',
+);
+add_theme_support( 'custom-header', $header );
+
+$background = array(
+	'default-color'          => '',
+	'default-image'          => '',
+	'wp-head-callback'       => '_custom_background_cb',
+	'admin-head-callback'    => '',
+	'admin-preview-callback' => ''
+);
+add_theme_support( 'custom-background', $background );
+
+add_editor_style();
 // Remove unnecessary funcions in wp_head().
 remove_action( 'wp_head', 'rsd_link' );
 remove_action( 'wp_head', 'wlwmanifest_link' );

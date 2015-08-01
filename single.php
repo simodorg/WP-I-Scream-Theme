@@ -6,15 +6,17 @@
   <?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
   <div class="mdl-card__media mdl-color-text--grey-50" <?php post_class( $classes ); ?> onclick="location.href='<?php the_permalink(); ?>';" style="<?php if ( !has_post_thumbnail( $post->ID ) ): ?>height: auto;<?php else : ?>background-image: url( '<?php echo $image[0]; ?>' );<?php endif; ?>>
     <a class="title" href="<?php the_permalink(); ?>"><?php the_title( '<h3>', '</h3>' ); ?></a>
-    <div class="post-category">
-      <i class="material-icons" role="presentation">chevron_right</i>
-      <span class="visuallyhidden">chevron_right</span>
-      <?php the_category(', '); ?>
-    </div>
-    <div class="post-tags">
-      <i class="material-icons" role="presentation">local_offer</i>
-      <span class="visuallyhidden">local_offter</span>
-      <?php the_tags( '', ', ', '' ); ?>
+    <div class="post-meta">
+      <div class="post-category">
+        <i class="material-icons" role="presentation">chevron_right</i>
+        <span class="visuallyhidden">chevron_right</span>
+        <?php the_category(', '); ?>
+      </div>
+      <div class="post-tags">
+        <i class="material-icons" role="presentation">local_offer</i>
+        <span class="visuallyhidden">local_offter</span>
+        <?php the_tags( '', ', ', '' ); ?>
+      </div>
     </div>
   </div>
   <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
@@ -24,14 +26,17 @@
       <span><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></span>
     </div>
     <div class="section-spacer"></div>
-    <div class="meta__views">
-      <?php if ( function_exists( 'the_views' ) ) { the_views(); } ?>
-      <i class="material-icons" role="presentation">visibility</i>
-      <span class="visuallyhidden">visibility</span>
-    </div>
+    <?php if ( function_exists( 'the_views' ) ) { ?>
+      <div class="meta__views">
+        <?php the_views();  ?>
+        <i class="material-icons" role="presentation">visibility</i>
+        <span class="visuallyhidden">visibility</span>
+      </div>
+    <?php } ?>
   </div>
-  <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
+  <div class="mdl-color-text--grey-700 mdl-card__supporting-text entry">
     <?php the_content(); ?>
+    <?php wp_link_pages(); ?>
   </div>
 
   <?php

@@ -3,10 +3,10 @@
 // Enqueue scripts and styles.
 function enqueue_scripts() {
   // Add Material Design icon fonts.
-  wp_enqueue_style( 'mdl-icon-fonts', 'https://fonts.googleapis.com/icon?family=Material+Icons', array(), null );
+  wp_enqueue_style( 'mdl-icon-fonts', 'https://cdn.css.net/fonts/icon?family=Material+Icons', array(), null );
 
   // Add Roboto fonts.
-  wp_enqueue_style( 'roboto-fonts', 'https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium', array(), null );
+  wp_enqueue_style( 'roboto-fonts', 'https://cdn.css.net/fonts/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium', array(), null );
 
   // Add Material Design CSS.
   wp_enqueue_style( 'mdl-sheet', get_template_directory_uri() . '/css/material.min.css', array(), '1.0.2' );
@@ -97,8 +97,7 @@ function mytheme_comment($comment, $args, $depth) {
            <span class="visuallyhidden">reply comment</span>
          </button>
        </nav>
-     '
-    );
+     ');
 
     comment_reply_link( array_merge( $reply_args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
   </div>
@@ -124,27 +123,27 @@ add_theme_support( 'html5', array( 'search-form' ) );
 add_theme_support( 'automatic-feed-links' );
 
 $header = array(
-	'default-image'          => '',
-	'random-default'         => false,
-	'width'                  => 0,
-	'height'                 => 0,
-	'flex-height'            => false,
-	'flex-width'             => false,
-	'default-text-color'     => '',
-	'header-text'            => true,
-	'uploads'                => true,
-	'wp-head-callback'       => '',
-	'admin-head-callback'    => '',
-	'admin-preview-callback' => '',
+  'default-image'          => '',
+  'random-default'         => false,
+  'width'                  => 0,
+  'height'                 => 0,
+  'flex-height'            => false,
+  'flex-width'             => false,
+  'default-text-color'     => '',
+  'header-text'            => true,
+  'uploads'                => true,
+  'wp-head-callback'       => '',
+  'admin-head-callback'    => '',
+  'admin-preview-callback' => '',
 );
 add_theme_support( 'custom-header', $header );
 
 $background = array(
-	'default-color'          => '',
-	'default-image'          => '',
-	'wp-head-callback'       => '_custom_background_cb',
-	'admin-head-callback'    => '',
-	'admin-preview-callback' => ''
+  'default-color'          => '',
+  'default-image'          => '',
+  'wp-head-callback'       => '_custom_background_cb',
+  'admin-head-callback'    => '',
+  'admin-preview-callback' => ''
 );
 add_theme_support( 'custom-background', $background );
 
@@ -165,7 +164,7 @@ add_filter( 'comment_reply_link', 'add_nofollow', 420, 4 );
 
 // Custom search form.
 function my_search_form( $form ) {
-	$form = '
+  $form = '
   <form role="search" method="get" id="searchform" class="searchform" action="' . home_url( '/' ) . '" >
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
       <label class="mdl-button mdl-js-button mdl-button--icon" for="s">
@@ -176,10 +175,10 @@ function my_search_form( $form ) {
         <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
       </div>
     </div>
-	</form>
+  </form>
   ';
 
-	return $form;
+  return $form;
 }
 
 add_filter( 'get_search_form', 'my_search_form' );

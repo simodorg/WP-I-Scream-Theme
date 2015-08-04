@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-title" content="<?php bloginfo( 'name' ); ?>">
+    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.jpg" type="image/jpeg" />
     <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/apple-touch-icon.png ">
     <?php wp_head(); ?>
   </head>

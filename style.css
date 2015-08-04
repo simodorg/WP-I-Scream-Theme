@@ -1,10 +1,10 @@
 /*
 Theme Name: I Scream
-Theme URI: http://www.getmdl.io/templates/blog/index.html
-Author: Google & Simo Dorg
+Theme URI: https://simod.org/wordpress-theme-i-scream/
+Author: Simo Dorg
 Author URI: https://simod.org/
 Description: This theme uses Material Design Lite with the blog template, coded by Simo Dorg.
-Version: 0.3.5
+Version: 0.4.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: pink, light, one-column, responsive-layout, featured-images, threaded-comments
@@ -16,11 +16,17 @@ Text Domain: iscream
 .wp-caption-text,
 .sticky,
 .gallery-caption,
-.bypostauthor,
-.alignright,
-.alignleft,
-.aligncenter {
+.bypostauthor {
+}
 
+.alignright {
+  text-align: right;
+}
+.alignleft {
+  text-align: left;
+}
+.aligncenter {
+  text-align: centert;
 }
 
 * {
@@ -34,20 +40,12 @@ Text Domain: iscream
   padding: 0;
   vertical-align: baseline;
 }
-body::before {
-    background-image: url('images/bg.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    content: '';
-    will-change: transform;
-    z-index: -1;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    position: fixed;
-}
 
+body {
+  background-image: url('images/bg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
 body .blog {
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
@@ -58,6 +56,22 @@ a {
 a:hover {
   text-decoration: underline;
 }
+pre {
+  padding: 0 20px 20px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font: 14px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  margin: 40px 0;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+  line-height: 1.5em;
+}
+.blog .entry p > code {
+  padding: 0.2em;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
 .blog .blog__title a,
 .blog .top .mdl-card__media a:hover,
 .blog .top ul li a:hover,
@@ -93,7 +107,6 @@ a:hover {
 }
 .blog .blog__title a {
   color: #fff;
-  letter-spacing: .6px
 }
 .blog .blog__description {
   margin: 0 0 120px;
@@ -381,6 +394,10 @@ a:hover {
 .blog .mdl-card h3.quote:after {
   content: '”';
 }
+.blog .post .mdl-card__media,
+.blog--blogpost .mdl-card__media {
+  text-shadow: 2px 2px rgba(0,0,0,.4);
+}
 .blog .mdl-card .post-meta {
   display: -webkit-box;
   display: -webkit-flex;
@@ -395,8 +412,15 @@ a:hover {
 .blog .mdl-card .post-category i,
 .blog .mdl-card .post-tags i {
   position: relative;
-  top: 5px;
-  font-size: 20px;
+  top: 4px;
+  font-size: 16px;
+}
+.blog .mdl-card .post-tags {
+  margin-left: 26px;
+}
+.blog .mdl-card .entry ul,
+.blog .mdl-card .entry ol {
+  margin-left: 20px;
 }
 .blog .more-link {
   margin-top: 16px;
@@ -433,8 +457,11 @@ a:hover {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-.blog--blogpost .meta + .mdl-card__supporting-text p {
-  max-width: 512px;
+.blog--blogpost .meta + .mdl-card__supporting-text.entry {
+  display: initial;
+}
+.blog--blogpost .meta + .mdl-card__supporting-text {
+  max-width: 600px;
   margin: 16px auto;
   font-size: 16px;
   line-height: 28px;
@@ -474,7 +501,7 @@ a:hover {
   width: 255px;
 }
 .blog--blogpost .comments form div:last-of-type {
-  width: 93.7%;
+  width: 88%;
   display: inline-block;
 }
 .blog--blogpost .comments h3 {
@@ -696,4 +723,21 @@ a:hover {
   background-color: white;
   box-sizing: border-box;
   box-shadow: 0 0 8px rgba(0,0,0,.4);
+}
+
+@media (max-width: 900px) {
+  .blog--blogpost .comments form .mdl-textfield {
+    width: auto;
+  }
+}
+@media (max-width: 480px) {
+  .blog .top .info i:first-child {
+    top: 48px;
+  }
+  .blog .top .info i:last-of-type {
+    top: 148px;
+  }
+  .blog--blogpost .comments form div:last-of-type {
+    width: 78%;
+  }
 }

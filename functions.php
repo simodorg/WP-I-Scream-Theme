@@ -15,7 +15,7 @@ function enqueue_scripts() {
   wp_enqueue_script( 'mdl-js', get_template_directory_uri() . '/js/material.min.js', array(), '1.0.2', true );
 
   // Load main stylesheet.
-  wp_enqueue_style( 'blog-sheet', get_stylesheet_uri(), array(), '0.3.5' );
+  wp_enqueue_style( 'blog-sheet', get_stylesheet_uri(), array(), '0.4.1' );
 
   if ( is_singular() ) wp_enqueue_script( 'comment-reply', true );
 }
@@ -116,42 +116,76 @@ function comment_add_at( $comment_text, $comment = '') {
 add_filter( 'comment_text' , 'comment_add_at', 20, 2 );
 
 // Add theme support.
-if ( ! isset( $content_width ) ) $content_width = 900;
-add_theme_support( 'title-tag' );
-add_theme_support( 'nav-menus' );
-add_theme_support( 'html5', array( 'search-form' ) );
-add_theme_support( 'automatic-feed-links' );
 
-$header = array(
-  'default-image'          => '',
-  'random-default'         => false,
-  'width'                  => 0,
-  'height'                 => 0,
-  'flex-height'            => false,
-  'flex-width'             => false,
-  'default-text-color'     => '',
-  'header-text'            => true,
-  'uploads'                => true,
-  'wp-head-callback'       => '',
-  'admin-head-callback'    => '',
-  'admin-preview-callback' => '',
-);
-add_theme_support( 'custom-header', $header );
+// Set content width value based on the theme's design
+if ( ! isset( $content_width ) )
+  $content_width = 900;
 
-$background = array(
-  'default-color'          => '',
-  'default-image'          => '',
-  'wp-head-callback'       => '_custom_background_cb',
-  'admin-head-callback'    => '',
-  'admin-preview-callback' => ''
-);
-add_theme_support( 'custom-background', $background );
+// Register Theme Features
+function theme_features()  {
 
-add_editor_style();
+  // Add theme support for Automatic Feed Links
+  add_theme_support( 'automatic-feed-links' );
+
+  // Add theme support for Post Formats
+  add_theme_support( 'post-formats', array( 'status', 'quote' ) );
+
+  // Add theme support for Featured Images
+  add_theme_support( 'post-thumbnails' );
+
+  // Add theme support for Custom Background
+  $background_args = array(
+    'default-color'          => '',
+    'default-image'          => get_template_directory_uri() . '/images/bg.jpg',
+    'default-repeat'         => 'no-repeat',
+    'default-position-x'     => '',
+    'wp-head-callback'       => '',
+    'admin-head-callback'    => '',
+    'admin-preview-callback' => '',
+  );
+
+  add_theme_support( 'custom-background', $background_args );
+
+  // Add theme support for Custom Header
+  $header_args = array(
+    'default-image'          => false,
+    'width'                  => 0,
+    'height'                 => 0,
+    'flex-width'             => false,
+    'flex-height'            => false,
+    'uploads'                => false,
+    'random-default'         => false,
+    'header-text'            => true,
+    'default-text-color'     => '#ffffff',
+    'wp-head-callback'       => '',
+    'admin-head-callback'    => '',
+    'admin-preview-callback' => '',
+  );
+
+  add_theme_support( 'custom-header', $header_args );
+
+  // Add theme support for HTML5 Semantic Markup
+  add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
+
+  // Add theme support for document Title tag
+  add_theme_support( 'title-tag' );
+
+  // Add theme support for nav.
+  add_theme_support( 'nav-menus' );
+
+  // Add theme support for custom CSS in the TinyMCE visual editor
+  add_editor_style();
+
+  // Add theme support for Translation
+  load_theme_textdomain( 'iscream', get_template_directory() . '/language' );
+}
+
+add_action( 'after_setup_theme', 'theme_features' );
+
 // Remove unnecessary funcions in wp_head().
 remove_action( 'wp_head', 'rsd_link' );
 remove_action( 'wp_head', 'wlwmanifest_link' );
-remove_action('wp_head', 'wp_generator');
+remove_action( 'wp_head', 'wp_generator' );
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
 

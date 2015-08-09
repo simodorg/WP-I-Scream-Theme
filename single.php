@@ -11,7 +11,7 @@
     <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><div class="minilogo"></div></a>
     <div>
       <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><strong><?php echo get_the_author_link(); ?></strong></a>
-      <span><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></span>
+      <p><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></p>
     </div>
     <div class="post-meta">
       <div class="post-category">
@@ -27,8 +27,8 @@
     </div>
     <div class="section-spacer"></div>
     <?php if ( function_exists( 'the_views' ) ) { ?>
+      <?php the_views();  ?>
       <div class="meta__views">
-        <?php the_views();  ?>
         <i class="material-icons" role="presentation">visibility</i>
         <span class="visuallyhidden">visibility</span>
       </div>

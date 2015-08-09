@@ -4,7 +4,7 @@ Theme URI: https://simod.org/wordpress-theme-i-scream/
 Author: Simo Dorg
 Author URI: https://simod.org/
 Description: This theme uses Material Design Lite with the blog template, coded by Simo Dorg.
-Version: 0.4.1
+Version: 0.5
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: pink, light, one-column, responsive-layout, featured-images, threaded-comments
@@ -214,13 +214,12 @@ pre {
   margin: 30px 0  30px 6px;
   color: #fff;
 }
-.blog .meta > .meta__views{
+.blog .meta > .meta__views {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
-  margin: 0 8px;
   font-size: 13px;
   font-weight: 500;
 }
@@ -238,16 +237,8 @@ pre {
 .blog .meta > *:first-child {
   margin-right: 16px;
 }
-.blog .meta > * {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
+.blog .meta p {
+  margin: 0;
 }
 
 .blog.is-small-screen .blog__posts > .mdl-card {
@@ -399,14 +390,7 @@ pre {
   text-shadow: 2px 2px rgba(0,0,0,.4);
 }
 .blog .mdl-card .post-meta {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-.blog .mdl-card .post-category,
-.blog .mdl-card .post-tags {
-  margin: 0 0 3px 8px;
+  margin: -4px 0 0 16px;
   font-size: 12px;
 }
 .blog .mdl-card .post-category i,
@@ -414,9 +398,6 @@ pre {
   position: relative;
   top: 4px;
   font-size: 16px;
-}
-.blog .mdl-card .post-tags {
-  margin-left: 26px;
 }
 .blog .mdl-card .entry ul,
 .blog .mdl-card .entry ol {

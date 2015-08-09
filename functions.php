@@ -3,10 +3,10 @@
 // Enqueue scripts and styles.
 function enqueue_scripts() {
   // Add Material Design icon fonts.
-  wp_enqueue_style( 'mdl-icon-fonts', 'https://cdn.css.net/fonts/icon?family=Material+Icons', array(), null );
+  wp_enqueue_style( 'mdl-icon-fonts', 'https://fonts.googleapis.com/icon?family=Material+Icons', array(), null );
 
   // Add Roboto fonts.
-  wp_enqueue_style( 'roboto-fonts', 'https://cdn.css.net/fonts/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium', array(), null );
+  wp_enqueue_style( 'roboto-fonts', 'https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium', array(), null );
 
   // Add Material Design CSS.
   wp_enqueue_style( 'mdl-sheet', get_template_directory_uri() . '/css/material.min.css', array(), '1.0.2' );
@@ -15,7 +15,7 @@ function enqueue_scripts() {
   wp_enqueue_script( 'mdl-js', get_template_directory_uri() . '/js/material.min.js', array(), '1.0.2', true );
 
   // Load main stylesheet.
-  wp_enqueue_style( 'blog-sheet', get_stylesheet_uri(), array(), '0.4.1' );
+  wp_enqueue_style( 'blog-sheet', get_stylesheet_uri(), array(), '0.5' );
 
   if ( is_singular() ) wp_enqueue_script( 'comment-reply', true );
 }
@@ -127,42 +127,8 @@ function theme_features()  {
   // Add theme support for Automatic Feed Links
   add_theme_support( 'automatic-feed-links' );
 
-  // Add theme support for Post Formats
-  add_theme_support( 'post-formats', array( 'status', 'quote' ) );
-
   // Add theme support for Featured Images
   add_theme_support( 'post-thumbnails' );
-
-  // Add theme support for Custom Background
-  $background_args = array(
-    'default-color'          => '',
-    'default-image'          => get_template_directory_uri() . '/images/bg.jpg',
-    'default-repeat'         => 'no-repeat',
-    'default-position-x'     => '',
-    'wp-head-callback'       => '',
-    'admin-head-callback'    => '',
-    'admin-preview-callback' => '',
-  );
-
-  add_theme_support( 'custom-background', $background_args );
-
-  // Add theme support for Custom Header
-  $header_args = array(
-    'default-image'          => false,
-    'width'                  => 0,
-    'height'                 => 0,
-    'flex-width'             => false,
-    'flex-height'            => false,
-    'uploads'                => false,
-    'random-default'         => false,
-    'header-text'            => true,
-    'default-text-color'     => '#ffffff',
-    'wp-head-callback'       => '',
-    'admin-head-callback'    => '',
-    'admin-preview-callback' => '',
-  );
-
-  add_theme_support( 'custom-header', $header_args );
 
   // Add theme support for HTML5 Semantic Markup
   add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );

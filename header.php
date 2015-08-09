@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-title" content="<?php bloginfo( 'name' ); ?>">
-    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.jpg" type="image/jpeg" />
+    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/apple-touch-icon.png ">
     <?php wp_head(); ?>
   </head>
@@ -18,11 +18,12 @@
               <i class="material-icons" role="presentation">arrow_back</i>
             </a>
           </div>
+        <?php } else { ?>
+          <header>
+            <h1 class="blog__title"><a href="<?php echo esc_url( home_url() );  ?>"><?php bloginfo( 'name' ); ?></a></h1>
+            <p class="blog__description"><?php bloginfo( 'description' ); ?></p>
+          </header>
         <?php } ?>
-        <header>
-          <h1 class="blog__title"><a href="<?php echo esc_url( home_url() );  ?>"><?php bloginfo( 'name' ); ?></a></h1>
-          <p class="blog__description"><?php bloginfo( 'description' ); ?></p>
-        </header>
         <div class="blog__posts mdl-grid">
           <?php if ( !is_singular() ) { ?>
             <div class="mdl-card mdl-cell mdl-cell--8-col top">

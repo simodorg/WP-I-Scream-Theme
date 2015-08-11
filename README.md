@@ -24,6 +24,7 @@ Styles from [Material Design Lite Blog Template](http://www.getmdl.io/templates/
 ## Notes
 
 *  Theme requires [WP-PostViews](https://wordpress.org/plugins/wp-postviews/) plugin.
+*  Please replace the <code>apple-touch-icon.png</code>, <code>favicon.png</code> and <code>images/avatar.png</code>.
 
 ## Todo Lists
 
